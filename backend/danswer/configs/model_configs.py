@@ -93,10 +93,12 @@ GEN_AI_API_ENDPOINT = os.environ.get("GEN_AI_API_ENDPOINT") or None
 GEN_AI_API_VERSION = os.environ.get("GEN_AI_API_VERSION") or None
 # LiteLLM custom_llm_provider
 GEN_AI_LLM_PROVIDER_TYPE = os.environ.get("GEN_AI_LLM_PROVIDER_TYPE") or None
-
+# Triton Communication Protocol
+GEN_AI_TRITON_PROTOCOL = os.environ.get("GEN_AI_TRITON_PROTOCOL") or 'grpc'
 # Set this to be enough for an answer + quotes. Also used for Chat
 GEN_AI_MAX_OUTPUT_TOKENS = int(os.environ.get("GEN_AI_MAX_OUTPUT_TOKENS") or 1024)
 # This next restriction is only used for chat ATM, used to expire old messages as needed
+
 GEN_AI_MAX_INPUT_TOKENS = int(os.environ.get("GEN_AI_MAX_INPUT_TOKENS") or 3000)
 # History for secondary LLM flows, not primary chat flow, generally we don't need to
 # include as much as possible as this just bumps up the cost unnecessarily

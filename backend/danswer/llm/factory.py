@@ -7,6 +7,7 @@ from danswer.llm.chat_llm import DefaultMultiLLM
 from danswer.llm.custom_llm import CustomModelServer
 from danswer.llm.exceptions import GenAIDisabledException
 from danswer.llm.gpt_4_all import DanswerGPT4All
+from danswer.llm.triton import DanswerTriton
 from danswer.llm.interfaces import LLM
 from danswer.llm.utils import get_gen_ai_api_key
 
@@ -37,6 +38,9 @@ def get_default_llm(
 
     if gen_ai_model_provider.lower() == "gpt4all":
         return DanswerGPT4All(model_version=model_version, timeout=timeout)
+    
+    if gen_ai_model_provider.lower() == "triton":
+        return DanswerTriton(model_version=model_version, api_key=api_key, timeout=timeout)
 
     return DefaultMultiLLM(
         model_version=model_version, api_key=api_key, timeout=timeout
